@@ -172,6 +172,23 @@ class GoveeLightEntity(LightEntity):
                 color_mode.add(ColorMode.ONOFF)
         return color_mode
 
+    @property
+    def color_mode(self) -> ColorMode:
+        """Return the active color mode.
+
+        The Govee API does not expose a reliable "current mode" discriminator
+        for every device, so we return the best supported mode for the device.
+        This keeps the entity compatible with newer Home Assistant light
+        validation, which expects a non-null color mode.
+        """
+        if self._device.support_color:
+            return ColorMode.HS
+        if self._device.support_color_tem:
+            return ColorMode.COLOR_TEMP
+        if self._device.support_brightness:
+            return ColorMode.BRIGHTNESS
+        return ColorMode.ONOFF
+
     async def async_turn_on(self, **kwargs):
         """Turn device on."""
         _LOGGER.debug(
@@ -295,6 +312,11 @@ class GoveeLightEntity(LightEntity):
     @property
     def color_temp(self):
         """Return the color_temp of the light."""
+        return self._device.color_temp
+
+    @property
+    def color_temp_kelvin(self):
+        """Return the color temperature in Kelvin."""
         return self._device.color_temp
 
     @property

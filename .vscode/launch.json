@@ -25,7 +25,7 @@
                     "remoteRoot": "/workspaces/hacs-govee"
                 },
                 {
-                    "localRoot": "/custom_components/govee",
+                    "localRoot": "/custom_components/govee_mc_fork",
                     "remoteRoot": "/workspaces/hacs-govee"
                 },
             ],

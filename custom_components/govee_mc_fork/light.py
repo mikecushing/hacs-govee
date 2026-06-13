@@ -98,7 +98,7 @@ class GoveeDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update(self):
         """Fetch data."""
         self.logger.debug("_async_update")
-        if "govee" not in self.hass.data:
+        if DOMAIN not in self.hass.data:
             raise UpdateFailed("Govee instance not available")
         try:
             hub = self.hass.data[DOMAIN]["hub"]
@@ -241,7 +241,7 @@ class GoveeLightEntity(LightEntity):
     @property
     def unique_id(self):
         """Return the unique ID."""
-        return f"govee_{self._title}_{self._device.device}"
+        return f"{DOMAIN}_{self._title}_{self._device.device}"
 
     @property
     def device_id(self):

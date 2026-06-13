@@ -1,5 +1,5 @@
 {
-  "title": "Govee",
+  "title": "Govee MC Fork",
   "config": {
     "abort": {
       "already_configured": "Already configured. Only a single configuration possible."
@@ -14,7 +14,6 @@
           "api_key": "API Key",
           "delay": "Poll Interval"
         },
-        "title": "",
         "description": "Get your API Key from the Govee Home App. For Details see https://github.com/LaggAt/hacs-govee/blob/master/README.md"
       }
     }

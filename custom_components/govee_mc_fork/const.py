@@ -1,6 +1,7 @@
 """Constants for the Govee LED strips integration."""
 
-DOMAIN = "govee"
+DOMAIN = "govee_mc_fork"
+INTEGRATION_NAME = "Govee MC Fork"
 
 CONF_DISABLE_ATTRIBUTE_UPDATES = "disable_attribute_updates"
 CONF_OFFLINE_IS_OFF = "offline_is_off"

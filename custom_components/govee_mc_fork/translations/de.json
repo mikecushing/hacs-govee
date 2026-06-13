@@ -1,5 +1,5 @@
 {
-  "title": "Govee",
+  "title": "Govee MC Fork",
   "config": {
     "abort": {
       "already_configured": "Bereits eingerichtet. Es ist nur eine Konfiguration möglich."

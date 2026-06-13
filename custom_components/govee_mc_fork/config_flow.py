@@ -15,6 +15,7 @@ from .const import (
     CONF_OFFLINE_IS_OFF,
     CONF_USE_ASSUMED_STATE,
     DOMAIN,
+    INTEGRATION_NAME,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -76,7 +77,7 @@ class GoveeFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 errors["base"] = "unknown"
 
             if not errors:
-                return self.async_create_entry(title=DOMAIN, data=user_input)
+                return self.async_create_entry(title=INTEGRATION_NAME, data=user_input)
 
         return self.async_show_form(
             step_id="user",
@@ -202,7 +203,7 @@ class GoveeOptionsFlowHandler(config_entries.OptionsFlow):
 
     async def _update_options(self):
         """Update config entry options."""
-        return self.async_create_entry(title=DOMAIN, data=self.options)
+        return self.async_create_entry(title=INTEGRATION_NAME, data=self.options)
 
 
 class CannotConnect(exceptions.HomeAssistantError):

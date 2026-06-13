@@ -1,8 +1,8 @@
 """Test the Govee config flow."""
 from homeassistant import config_entries, setup
-from custom_components.govee.const import DOMAIN
 from homeassistant.const import CONF_API_KEY, CONF_DELAY
 from homeassistant.core import HomeAssistant
+from custom_components.govee_mc_fork.const import DOMAIN, INTEGRATION_NAME
 
 # from tests.async_mock import patch
 from unittest.mock import patch
@@ -18,12 +18,12 @@ async def test_form(hass: HomeAssistant):
     assert result["errors"] == {}
 
     with patch(
-        "custom_components.govee.config_flow.Govee.get_devices",
+        "custom_components.govee_mc_fork.config_flow.Govee.get_devices",
         return_value=([], None),
     ), patch(
-        "custom_components.govee.async_setup", return_value=True
+        "custom_components.govee_mc_fork.async_setup", return_value=True
     ) as mock_setup, patch(
-        "custom_components.govee.async_setup_entry",
+        "custom_components.govee_mc_fork.async_setup_entry",
         return_value=True,
     ) as mock_setup_entry:
         result2 = await hass.config_entries.flow.async_configure(
@@ -32,7 +32,7 @@ async def test_form(hass: HomeAssistant):
         )
 
     assert result2["type"] == "create_entry"
-    assert result2["title"] == "govee"
+    assert result2["title"] == INTEGRATION_NAME
     assert result2["data"] == {"api_key": "api_key", "delay": 7}
     await hass.async_block_till_done()
     assert len(mock_setup.mock_calls) == 1
@@ -46,7 +46,7 @@ async def test_form_cannot_connect(hass: HomeAssistant):
     )
 
     with patch(
-        "custom_components.govee.config_flow.Govee.get_devices",
+        "custom_components.govee_mc_fork.config_flow.Govee.get_devices",
         return_value=(None, "connection error"),
     ):
         result2 = await hass.config_entries.flow.async_configure(
@@ -65,7 +65,7 @@ async def test_form_unknown_exception(hass: HomeAssistant):
     )
 
     with patch(
-        "custom_components.govee.config_flow.Govee.get_devices",
+        "custom_components.govee_mc_fork.config_flow.Govee.get_devices",
         side_effect=Exception,
     ):
         result2 = await hass.config_entries.flow.async_configure(

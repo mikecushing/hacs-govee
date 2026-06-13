@@ -82,7 +82,7 @@ ALWAYS REMEMBER: this should always be a temporarly workaround, if you use it in
 
 To remind you disabling it asap, this wil log a warning on every update.
 
-## What is config/govee_learning.yaml
+## What is config/govee_mc_fork_learning.yaml
 
 Usually you don't have to do anything here - just in case something feels wrong read on:
 
@@ -112,8 +112,8 @@ For bug reports, include the debug log, which can be enabled in configuration YA
 logger:
   default: warning
   logs:
-    homeassistant.components.govee: debug
-    custom_components.govee: debug
+    homeassistant.components.govee_mc_fork: debug
+    custom_components.govee_mc_fork: debug
     govee_api_laggat: debug
 ```
 

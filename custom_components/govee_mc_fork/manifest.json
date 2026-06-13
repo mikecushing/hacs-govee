@@ -1,6 +1,6 @@
 {
-  "domain": "govee",
-  "name": "Govee",
+  "domain": "govee_mc_fork",
+  "name": "Govee MC Fork",
   "codeowners": ["@LaggAt"],
   "config_flow": true,
   "dependencies": [],

@@ -10,7 +10,7 @@ import yaml
 from homeassistant.util.yaml import load_yaml, save_yaml
 
 _LOGGER = logging.getLogger(__name__)
-LEARNING_STORAGE_YAML = "/govee_learning.yaml"
+LEARNING_STORAGE_YAML = "/govee_mc_fork_learning.yaml"
 
 
 class GoveeLearningStorage(GoveeAbstractLearningStorage):
